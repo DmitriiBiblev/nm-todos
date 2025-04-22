@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gj-space-24);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--gj-space-16);
+}
+
+.back {
+  color: var(--gj-color-light) !important;
+  background: var(--gj-color-primary);
+  border-radius: var(--gj-space-8);
+  display: flex;
+  transition: color .2s, background-color .2s;
+
+  &:hover {
+    background: var(--gj-color-secondary);
+    border-color: var(--gj-color-secondary);
+  }
+
+  &:active {
+    color: var(--gj-color-salat-30) !important;
+    background: var(--gj-color-salat-90);
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+ }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gj-space-12);
+
+  &__btn {
+    align-self: flex-start;
+  }
+}

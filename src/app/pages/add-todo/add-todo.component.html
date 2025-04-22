@@ -1,29 +1,56 @@
 <div class="header">
-  <button>
-    Back
-  </button>
+  <a class="back" [routerLink]="previousUrl">
+    <mat-icon fontIcon="chevron_left"></mat-icon>
+  </a>
 
   <div class="title">
     Add ToDo
   </div>
 </div>
 
-<div>
-  Title TextArea required
-</div>
+<form class="form" [formGroup]="form" (ngSubmit)="handleCreate()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Title required</mat-label>
 
-<div>
-  Expiration date required
+    <input
+      matInput
+      required
+      formControlName="title"
+      placeholder="Enter title"
+    >
+  </mat-form-field>
 
-  не может быть меньше текущей
-</div>
+  <mat-form-field>
+    <mat-label>Expiration date</mat-label>
 
-<div>
-  Expiration time optional
+    <input
+      matInput
+      required
+      readonly
+      formControlName="expiredAtDate"
+      placeholder="Select date"
+      [matDatepicker]="datepicker"
+      (click)="datepicker.open()"
+    >
 
-  если тек дата, то не может быть меньше тек времени
-</div>
+    <mat-datepicker #datepicker />
+  </mat-form-field>
 
-<button>
-  Create
-</button>
+  <mat-form-field>
+    <mat-label>Expiration time</mat-label>
+
+    <input
+      matInput
+      readonly
+      formControlName="expiredAtTime"
+      placeholder="Select time"
+      [ngxTimepicker]="timepicker"
+    >
+
+    <ngx-material-timepicker #timepicker />
+  </mat-form-field>
+
+  <button mat-flat-button class="form__btn">
+    Create
+  </button>
+</form>

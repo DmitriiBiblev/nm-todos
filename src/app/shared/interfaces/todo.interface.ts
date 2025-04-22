@@ -2,6 +2,7 @@ export interface Todo {
   id: number;
   title: string;
   createdAt: Date;
-  expiredAt: Date;
+  expiredAtDate: Date;
+  expiredAtTime: string;
   isFavorite: boolean;
 }
