@@ -1,4 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/index';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  &::-webkit-scrollbar {
+    width: .6rem;
+    height: .6rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--gj-color-secondary);
+    border-radius: var(--gj-radius-8);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gj-color-grey-90);
+    border-radius: var(--gj-radius-4);
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: var(--gj-color-light);
+  background: var(--gj-color-primary);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+router-outlet {
+  display: contents;
+}
+
+.container {
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  & > * {
+    flex: 1;
+  }
+}

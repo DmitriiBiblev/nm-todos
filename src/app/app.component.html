@@ -1,26 +1,26 @@
-<header>
+<header class="header">
   <div class="container">
-    <div class="logo">
-      NM TODO
+    <div class="header__wrapper">
+      <div class="logo">
+        NM TODO
+      </div>
+
+      <nav class="nav">
+        @for (navItem of navItems; track navItem.path) {
+          <a
+            class="nav__item"
+            routerLink="{{ navItem.path }}"
+            routerLinkActive="active"
+          >
+            {{ navItem.title }}
+          </a>
+        }
+      </nav>
+
+      <a class="github" href="https://github.com/DmitriiBiblev/nm-todos" target="_blank">
+        GitHub
+      </a>
     </div>
-
-    <nav>
-      <a routerLink="/add">
-        Add
-      </a>
-
-      <a routerLink="/list">
-        List
-      </a>
-
-      <a routerLink="/favorite">
-        Favorite
-      </a>
-    </nav>
-
-    <a class="github" href="https://github.com/DmitriiBiblev/nm-todos" target="_blank">
-      Github
-    </a>
   </div>
 </header>
 

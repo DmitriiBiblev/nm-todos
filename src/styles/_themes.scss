@@ -1,0 +1,95 @@
+// Эти и другие переменные взяты из всоего проекта,
+// чтобы сократить время на выдумывание цветовой палитры
+// В оригинальном проекте здесь 2 цветовые схемы для светлой и темной тем
+
+:root {
+  --gj-color-primary: #15161A;
+  --gj-color-secondary: #1E1F25;
+  --gj-color-tertiary: #292D32;
+
+  --gj-color-light: #FFF;
+
+  --gj-color-grey-10: #ECEBFF;
+  --gj-color-grey-20: #DFDDF6;
+  --gj-color-grey-30: #CCC9F0;
+  --gj-color-grey-40: #BFBCE0;
+  --gj-color-grey-50: #A4A1C7;
+  --gj-color-grey-60: #827FA4;
+  --gj-color-grey-70: #605E79;
+  --gj-color-grey-80: #4A485D;
+  --gj-color-grey-90: #393849;
+
+  --gj-color-salat-10: #ECFFD4;
+  --gj-color-salat-20: #BEFF8B;
+  --gj-color-salat-30: #ABF066;
+  --gj-color-salat-40: #85CD4C;
+  --gj-color-salat-50: #79B52D;
+  --gj-color-salat-60: #5C9C0A;
+  --gj-color-salat-70: #427E06;
+  --gj-color-salat-80: #366100;
+  --gj-color-salat-90: #2B4C00;
+
+  --gj-color-blue-10: #E5E1FF;
+  --gj-color-blue-20: #C1B7FF;
+  --gj-color-blue-30: #9B89FF;
+  --gj-color-blue-40: #755DFE;
+  --gj-color-blue-50: #563DE5;
+  --gj-color-blue-60: #4B35C9;
+  --gj-color-blue-70: #3E2BA7;
+  --gj-color-blue-80: #352880;
+  --gj-color-blue-90: #261E55;
+
+  --gj-color-red-10: #FFE1E1;
+  --gj-color-red-20: #FFB7B7;
+  --gj-color-red-30: #FF8989;
+  --gj-color-red-40: #FE5D5D;
+  --gj-color-red-50: #E53D3D;
+  --gj-color-red-60: #C93535;
+  --gj-color-red-70: #A72B2B;
+  --gj-color-red-80: #7F2828;
+  --gj-color-red-90: #551E1E;
+
+  --gj-color-orange-10: #FFEEE1;
+  --gj-color-orange-20: #FFD9B7;
+  --gj-color-orange-30: #FFC289;
+  --gj-color-orange-40: #FEAA5D;
+  --gj-color-orange-50: #E5843D;
+  --gj-color-orange-60: #C96A35;
+  --gj-color-orange-70: #A7582B;
+  --gj-color-orange-80: #7F3D28;
+  --gj-color-orange-90: #552E1E;
+
+  --gj-color-violet-10: #F9EDFF;
+  --gj-color-violet-20: #D088F2;
+  --gj-color-violet-30: #BE67E7;
+  --gj-color-violet-40: #AB48DB;
+  --gj-color-violet-50: #9A39CA;
+  --gj-color-violet-60: #9034BC;
+  --gj-color-violet-70: #6F2793;
+  --gj-color-violet-80: #572072;
+  --gj-color-violet-90: #3F1553;
+
+  --gj-color-yellow-10: #FFFBD4;
+  --gj-color-yellow-20: #FFF8B5;
+  --gj-color-yellow-30: #F9F48D;
+  --gj-color-yellow-40: #F9E746;
+  --gj-color-yellow-50: #EDE51D;
+  --gj-color-yellow-60: #D2BE08;
+  --gj-color-yellow-70: #B2A105;
+  --gj-color-yellow-80: #796E0B;
+  --gj-color-yellow-90: #615808;
+
+  --gj-color-turquoise-10: #D9F9FF;
+  --gj-color-turquoise-20: #B5F0FB;
+  --gj-color-turquoise-30: #93D5E1;
+  --gj-color-turquoise-40: #65CBDD;
+  --gj-color-turquoise-50: #3CBDD8;
+  --gj-color-turquoise-60: #289CB4;
+  --gj-color-turquoise-70: #208599;
+  --gj-color-turquoise-80: #186775;
+  --gj-color-turquoise-90: #0E3F48;
+
+  --gj-shadow-dropdown: 0 0 2rem 0 rgba(21, 22, 26, .56);
+
+  color-scheme: dark;
+}

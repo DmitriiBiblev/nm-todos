@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gj-space-24);
+}
+
+.header {
+  background: var(--gj-color-primary);
+
+  &__wrapper {
+    padding-block: var(--gj-space-24);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--gj-space-20);
+
+  &__item {
+    font-size: 16px;
+    color: var(--gj-color-grey-50);
+    transition: color .2s;
+
+    &:hover {
+      color: var(--gj-color-light);
+    }
+
+    &.active {
+      color: var(--gj-color-violet-30);
+      cursor: default;
+    }
+  }
+}
+
+.github {
+  font-size: 20px;
+  color: var(--gj-color-grey-70);
+  cursor: pointer;
+  transition: color .2s;
+
+  &:hover {
+    color: var(--gj-color-light);
+  }
+
+  &:active {
+    color: var(--gj-color-blue-30);
+  }
+}
+
+.main {
+
+}
