@@ -11,17 +11,17 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIcon } from '@angular/material/icon';
 import { Debounced } from '../../decorators';
 import { Todo } from '../../interfaces';
 import { TodosService } from '../../services';
+import { ActionButtonComponent } from '../action-button';
 import { DeleteTodoPopupComponent } from '../delete-todo-popup';
 import { TimerComponent } from '../timer';
 
 @Component({
   selector: 'tr[app-todo-row]',
   standalone: true,
-  imports: [MatIcon, TimerComponent, DatePipe],
+  imports: [TimerComponent, DatePipe, ActionButtonComponent],
   templateUrl: './todo-row.component.html',
   styleUrl: './todo-row.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

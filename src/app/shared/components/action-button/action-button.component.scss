@@ -1,0 +1,28 @@
+:host {
+  color: var(--gj-color-grey-70);
+  display: flex;
+  transition: color .2s;
+
+  & > mat-icon {
+    font-size: 20px;
+  }
+
+  &:hover {
+    color: var(--gj-color-salat-30);
+  }
+
+  &:active,
+  &.active {
+    color: var(--gj-color-salat-60);
+  }
+
+  &.negative {
+    &:hover {
+      color: var(--gj-color-red-30);
+    }
+
+    &:active {
+      color: var(--gj-color-red-50);
+    }
+  }
+}

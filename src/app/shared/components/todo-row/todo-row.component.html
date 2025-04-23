@@ -18,13 +18,19 @@
 </td>
 
 <td>
-  <button class="button" [class.active]="todo().isFavorite" (click)="handleToggleFavorite()">
-    <mat-icon fontIcon="favorite"></mat-icon>
-  </button>
+  <button
+    app-action-button
+    icon="favorite"
+    [class.active]="todo().isFavorite"
+    (click)="handleToggleFavorite()"
+  ></button>
 </td>
 
 <td>
-  <button class="button negative" (click)="handleDeleteTodo()">
-    <mat-icon fontIcon="close"></mat-icon>
-  </button>
+  <button
+    app-action-button
+    negative
+    icon="close"
+    (click)="handleDeleteTodo()"
+  ></button>
 </td>

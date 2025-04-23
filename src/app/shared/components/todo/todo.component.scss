@@ -1,0 +1,37 @@
+:host {
+  padding-block: var(--gj-space-16);
+  border-bottom: 1px solid var(--gj-color-grey-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gj-space-8);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--gj-space-8);
+}
+
+.title  {
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.param {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: var(--gj-space-8);
+}
+
+.label {
+  color: var(--gj-color-grey-50);
+}

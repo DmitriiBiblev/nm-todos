@@ -3,8 +3,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  HostListener,
   input,
   InputSignalWithTransform,
+  signal,
   Signal
 } from '@angular/core';
 import { tableSettings } from '../../data';
@@ -29,6 +31,13 @@ export class TodoBlockComponent {
   isToday: InputSignalWithTransform<boolean, unknown> = input(false, { alias: 'today', transform: booleanAttribute });
   todos = input.required<Todo[]>();
 
+  protected readonly screenWidth = signal(window.innerWidth);
+
   protected readonly title = computed(() => this.isToday() ? 'Today' : ' Other days');
   protected readonly tableSettings: Signal<TableSetting[]> = computed(() => tableSettings(this.isToday()));
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.screenWidth.set(window.innerWidth);
+  }
 }

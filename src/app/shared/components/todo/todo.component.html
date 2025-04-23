@@ -1,24 +1,43 @@
-<div>
-  Title
+<div class="header">
+  <div class="title">
+    {{ todo().title }}
+  </div>
+
+  <button
+    app-action-button
+    icon="favorite"
+    [class.active]="todo().isFavorite"
+    (click)="handleToggleFavorite()"
+  ></button>
+
+  <button
+    app-action-button
+    negative
+    icon="close"
+    (click)="handleDeleteTodo()"
+  ></button>
 </div>
 
-<div>
-  Apr 15, 2025
+<div class="param">
+  <div class="label">
+    Created at:
+  </div>
+
+  {{ todo().createdAt | date: 'MMM dd, yyyy' }}
 </div>
 
-<div>
-  @if (true) {
-    02h 11m 23s
+<div class="param">
+  <div class="label">
+    @if (isToday()) {
+      Time left:
+    } @else {
+      Expired at:
+    }
+  </div>
+
+  @if (isToday()) {
+    <app-timer [expiredAt]="todo().expiredAt" />
   } @else {
-    Apr 16, 2025
+    {{ todo().expiredAt | date: 'MMM dd, yyyy' }}
   }
-</div>
-
-<div>
-  <mat-icon fontIcon="favorite"></mat-icon>
-</div>
-
-
-<div>
-  <mat-icon fontIcon="close"></mat-icon>
 </div>

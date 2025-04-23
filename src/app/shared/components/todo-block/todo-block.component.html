@@ -5,15 +5,15 @@
 </div>
 
 <div class="content">
-  @if (true) {
+  @if (screenWidth() > 600) {
     <app-table [tableSettings]="tableSettings()">
       @for (todo of todos(); track todo.id) {
         <tr app-todo-row [todo]="todo" [isToday]="isToday()"></tr>
       }
     </app-table>
   } @else {
-    @for (i of todos(); track i) {
-      <app-todo />
+    @for (todo of todos(); track todo.id) {
+      <app-todo [todo]="todo" [isToday]="isToday()"/>
     }
   }
 </div>
