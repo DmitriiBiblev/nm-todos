@@ -1,16 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TodoComponent } from '../todo';
+import { ChangeDetectionStrategy, Component, input, InputSignal, ViewEncapsulation } from '@angular/core';
+import { TableSetting } from '../../interfaces';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [
-    TodoComponent
-  ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  host: {
+    class: 'custom-table'
+  },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class TableComponent {
-
+  tableSettings: InputSignal<TableSetting[]> = input.required();
 }

@@ -1,0 +1,30 @@
+<td>
+  <!-- Тут можно было бы отслеживать, если обрезалось, то показать тултип при наведении -->
+  <div class="title">
+    {{ title }}
+  </div>
+</td>
+
+<td>
+  Apr 15, 2025
+</td>
+
+<td>
+  @if (true) {
+    <app-timer />
+  } @else {
+    Apr 16, 2025
+  }
+</td>
+
+<td>
+  <button class="button" [class.active]="true">
+    <mat-icon fontIcon="favorite"></mat-icon>
+  </button>
+</td>
+
+<td>
+  <button class="button negative">
+    <mat-icon fontIcon="close"></mat-icon>
+  </button>
+</td>

@@ -1,0 +1,20 @@
+:host {
+  border: 1px solid var(--gj-color-grey-20);
+  border-radius: var(--gj-radius-8);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: var(--gj-space-12);
+  border-bottom: 1px solid var(--gj-color-grey-20);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.content {
+  padding: var(--gj-space-12);
+}

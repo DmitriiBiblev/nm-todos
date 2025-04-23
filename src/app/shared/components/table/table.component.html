@@ -1,1 +1,23 @@
-<app-todo />
+<table>
+  <colgroup>
+    @for (setting of tableSettings(); track setting.prop) {
+      @if (setting?.width) {
+        <col [style.width]="setting.width">
+      } @else {
+        <col>
+      }
+    }
+  </colgroup>
+
+  <thead>
+    @for (setting of tableSettings(); track setting.prop) {
+      <th>
+        {{ setting.name }}
+      </th>
+    }
+  </thead>
+
+  <tbody>
+  <ng-content />
+  </tbody>
+</table>

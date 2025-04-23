@@ -13,14 +13,14 @@ a {
   text-decoration: none;
 }
 
-//button {
-//  color: inherit;
-//  background: none;
-//  border: 0;
-//  outline: none;
-//  cursor: pointer;
-//
-//  &:has(i) {
-//    display: flex;
-//  }
-//}
+button {
+  color: inherit;
+  background: none;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+
+  &:has(i) {
+    display: flex;
+  }
+}
