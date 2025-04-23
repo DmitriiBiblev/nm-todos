@@ -1,3 +1,4 @@
+export * from './delete-todo-popup';
 export * from './header-page';
 export * from './loader';
 export * from './table';
