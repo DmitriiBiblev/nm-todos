@@ -2,8 +2,8 @@ import { computed, inject, Injectable, signal, WritableSignal } from '@angular/c
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { isToday } from 'date-fns';
 import { delay, tap } from 'rxjs';
-import { INITIAL_GROUPED_TODOS, LAST_TODO_ID_KEY, TODO_KEY, TODO_SCHEMA } from '../data';
-import { GroupedTodos, Todo } from '../interfaces';
+import { INITIAL_GROUPED_TODOS, TODO_KEY, TODO_SCHEMA } from '../data';
+import { CreateTodo, GroupedTodos, Todo } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,12 @@ export class TodosService {
 
   isLoading: WritableSignal<boolean> = signal(true);
   todos: WritableSignal<Todo[]> = signal([]);
-  lastTodoId: WritableSignal<number | null> = signal(null);
 
   allTodos = computed(() => this.todos().reduce(this.#groupTodo, INITIAL_GROUPED_TODOS));
   favoritesTodos = computed(() => this.todos().reduce((grouped: GroupedTodos, todo: Todo) => {
     if (!todo.isFavorite) return grouped;
     return this.#groupTodo(grouped, todo);
   }, INITIAL_GROUPED_TODOS));
-
-  initialLastTodoId(): void {
-    this.#storageMap.get<number>(LAST_TODO_ID_KEY, { type: 'number' })
-      .subscribe((lastTodoId?: number) => this.lastTodoId.set(lastTodoId || 0));
-  }
 
   initialTodos(): void {
     this.#storageMap.get<Todo[]>(TODO_KEY, TODO_SCHEMA)
@@ -38,15 +32,20 @@ export class TodosService {
       });
   }
 
-  create(todo: Todo): void {
-    const id: number = this.lastTodoId()! + 1;
+  create({ expiredAtDate, ...todo }: CreateTodo): void {
+    const newTodo: Todo = {
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+      expiredAtDate: expiredAtDate.toISOString(),
+      isFavorite: false,
+      ...todo,
+    };
 
-    this.todos.update((todos: Todo[]) => [...todos, { ...todo, id }]);
-    this.#storageMap.set(LAST_TODO_ID_KEY, id);
+    this.todos.update((todos: Todo[]) => [...todos, newTodo]);
     this.#updateStorage();
   }
 
-  toggleFavorite(id: number): void {
+  toggleFavorite(id: string): void {
     this.todos.update((todos: Todo[]) => todos.map((todo: Todo) => {
       if (todo.id !== id) return todo;
       return { ...todo, isFavorite: !todo.isFavorite };
@@ -54,7 +53,7 @@ export class TodosService {
     this.#updateStorage();
   }
 
-  delete(todoId: number): void {
+  delete(todoId: string): void {
     this.todos.update((todos: Todo[]) => todos.filter(({ id }) => todoId !== id));
     this.#updateStorage();
   }

@@ -3,11 +3,11 @@
 } @else {
   @if (!isEmptyTodoLists()) {
     @if (todayTodos().length) {
-      <app-todo-block today />
+      <app-todo-block today [todos]="todayTodos()" />
     }
 
     @if (otherTodos().length) {
-      <app-todo-block />
+      <app-todo-block [todos]="otherTodos()" />
     }
   } @else {
     <div class="empty">

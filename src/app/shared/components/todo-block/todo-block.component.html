@@ -1,22 +1,18 @@
 <div class="header">
   <div class="title">
-    @if (isToday()) {
-      Today
-    } @else {
-      Other days
-    }
+    {{ title() }}
   </div>
 </div>
 
 <div class="content">
   @if (true) {
     <app-table [tableSettings]="tableSettings()">
-      @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track i) {
-        <tr app-todo-row [isToday]="isToday()"></tr>
+      @for (todo of todos(); track todo.id) {
+        <tr app-todo-row [todo]="todo" [isToday]="isToday()"></tr>
       }
     </app-table>
   } @else {
-    @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track i) {
+    @for (i of todos(); track i) {
       <app-todo />
     }
   }

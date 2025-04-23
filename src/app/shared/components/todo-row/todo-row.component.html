@@ -1,30 +1,30 @@
 <td>
   <!-- Тут можно было бы отслеживать, если обрезалось, то показать тултип при наведении -->
   <div class="title">
-    {{ title }}
+    {{ todo().title }}
   </div>
 </td>
 
 <td>
-  Apr 15, 2025
+  {{ todo().createdAt | date: 'MMM dd, yyyy' }}
 </td>
 
 <td>
-  @if (true) {
+  @if (isToday()) {
     <app-timer />
   } @else {
-    Apr 16, 2025
+    {{ todo().expiredAtDate | date: 'MMM dd, yyyy' }}
   }
 </td>
 
 <td>
-  <button class="button" [class.active]="true">
+  <button class="button" [class.active]="todo().isFavorite" (click)="handleToggleFavorite()">
     <mat-icon fontIcon="favorite"></mat-icon>
   </button>
 </td>
 
 <td>
-  <button class="button negative">
+  <button class="button negative" (click)="handleDeleteTodo()">
     <mat-icon fontIcon="close"></mat-icon>
   </button>
 </td>

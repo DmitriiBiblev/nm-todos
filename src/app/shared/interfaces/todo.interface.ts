@@ -1,8 +1,8 @@
-export interface Todo {
-  id: number;
+export interface Todo  {
+  id: string;
   title: string;
-  createdAt: Date;
-  expiredAtDate: Date;
+  createdAt: string;
+  expiredAtDate: string;
   expiredAtTime: string;
   isFavorite: boolean;
 }

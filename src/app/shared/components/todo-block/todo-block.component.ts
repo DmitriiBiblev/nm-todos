@@ -7,7 +7,8 @@ import {
   InputSignalWithTransform,
   Signal
 } from '@angular/core';
-import { TableSetting } from '../../interfaces';
+import { tableSettings } from '../../data';
+import { TableSetting, Todo } from '../../interfaces';
 import { TableComponent } from '../table';
 import { TodoComponent } from '../todo';
 import { TodoRowComponent } from '../todo-row';
@@ -26,12 +27,8 @@ import { TodoRowComponent } from '../todo-row';
 })
 export class TodoBlockComponent {
   isToday: InputSignalWithTransform<boolean, unknown> = input(false, { alias: 'today', transform: booleanAttribute });
+  todos = input.required<Todo[]>();
 
-  protected readonly tableSettings: Signal<TableSetting[]> = computed(() => ([
-    { prop: 'title' },
-    { name: 'Created At', prop: 'createdAt', width: '150px' },
-    { name: this.isToday() ? 'Time left' : 'Expiration', prop: 'expiredAt', width: '150px' },
-    { prop: 'favorite', width: '36px' },
-    { prop: 'actions', width: '36px' }
-  ]));
+  protected readonly title = computed(() => this.isToday() ? 'Today' : ' Other days');
+  protected readonly tableSettings: Signal<TableSetting[]> = computed(() => tableSettings(this.isToday()));
 }
