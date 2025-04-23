@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { isToday } from 'date-fns';
+import { isToday, parse } from 'date-fns';
 import { delay, tap } from 'rxjs';
 import { INITIAL_GROUPED_TODOS, TODO_KEY, TODO_SCHEMA } from '../data';
 import { CreateTodo, GroupedTodos, Todo } from '../interfaces';
@@ -35,12 +35,12 @@ export class TodosService {
   }
 
   create({ title, expiredAtDate, expiredAtTime }: CreateTodo): void {
+    const expiredAt = parse(expiredAtTime || '12:00 PM', 'h:mm a', expiredAtDate).toISOString();
     const newTodo: Todo = {
       id: crypto.randomUUID(),
       title,
       createdAt: new Date().toISOString(),
-      expiredAtDate: expiredAtDate.toISOString(),
-      expiredAtTime: expiredAtTime || '12:00 PM',
+      expiredAt,
       isFavorite: false,
     };
 
@@ -63,7 +63,7 @@ export class TodosService {
   }
 
   #groupTodo(grouped: GroupedTodos, todo: Todo): GroupedTodos {
-    return isToday(todo.expiredAtDate)
+    return isToday(todo.expiredAt)
       ? { ...grouped, today: [...grouped.today, todo] }
       : { ...grouped, other: [...grouped.other, todo] };
   }

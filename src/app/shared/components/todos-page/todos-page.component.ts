@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, Signal } from '@angular/core';
+import { compareAsc } from 'date-fns';
 import { GroupedTodos, Todo } from '../../interfaces';
 import { TodosService } from '../../services';
 import { LoaderComponent } from '../loader';
@@ -22,8 +23,12 @@ export class TodosPageComponent implements OnInit {
 
   protected readonly isLoading = this.#todosService.isLoading;
 
-  protected readonly todayTodos: Signal<Todo[]> = computed(() => this.todos().today);
-  protected readonly otherTodos: Signal<Todo[]> = computed(() => this.todos().other);
+  protected readonly todayTodos: Signal<Todo[]> = computed(() => this.todos().today
+    .sort((a, b) => compareAsc(a.expiredAt, b.expiredAt))
+  );
+  protected readonly otherTodos: Signal<Todo[]> = computed(() => this.todos().other
+    .sort((a, b) => compareAsc(a.expiredAt, b.expiredAt))
+  );
   protected readonly isEmptyTodoLists: Signal<boolean> = computed(() => !this.todayTodos().length && !this.otherTodos().length);
 
   ngOnInit(): void {

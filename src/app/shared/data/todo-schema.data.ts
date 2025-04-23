@@ -8,10 +8,9 @@ export const TODO_SCHEMA: JSONSchema = {
       id: { type: 'string' },
       title: { type: 'string' },
       createdAt: { type: 'string' },
-      expiredAtDate: { type: 'string' },
-      expiredAtTime: { type: 'string' },
+      expiredAt: { type: 'string' },
       isFavorite: { type: 'boolean' }
     },
-    required: ['id', 'title', 'createdAt', 'expiredAtDate', 'expiredAtTime', 'isFavorite']
+    required: ['id', 'title', 'createdAt', 'expiredAt', 'isFavorite']
   }
 };
