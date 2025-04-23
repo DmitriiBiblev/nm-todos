@@ -8,12 +8,19 @@
   <mat-form-field class="example-full-width">
     <mat-label>Title required</mat-label>
 
-    <input
+    <textarea
       matInput
       required
       formControlName="title"
       placeholder="Enter title"
-    >
+      maxlength="100"
+    ></textarea>
+
+    @if (form.controls.title.hasError('required')) {
+      <mat-error>
+        Title is required
+      </mat-error>
+    }
   </mat-form-field>
 
   <mat-form-field>
@@ -26,6 +33,7 @@
       formControlName="expiredAtDate"
       placeholder="Select date"
       [matDatepicker]="datepicker"
+      [min]="minDate"
       (click)="datepicker.open()"
     >
 
@@ -44,6 +52,10 @@
     >
 
     <ngx-material-timepicker #timepicker />
+
+    @if (form.controls.expiredAtTime.hasError('invalidTime')) {
+      <mat-error>The selected time cannot be in the past.</mat-error>
+    }
   </mat-form-field>
 
   <button mat-flat-button class="form__btn">

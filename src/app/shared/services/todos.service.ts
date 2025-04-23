@@ -1,4 +1,5 @@
 import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { isToday } from 'date-fns';
 import { delay, tap } from 'rxjs';
@@ -10,6 +11,7 @@ import { CreateTodo, GroupedTodos, Todo } from '../interfaces';
 })
 export class TodosService {
   readonly #storageMap = inject(StorageMap);
+  readonly #router = inject(Router);
 
   isLoading: WritableSignal<boolean> = signal(true);
   todos: WritableSignal<Todo[]> = signal([]);
@@ -32,17 +34,19 @@ export class TodosService {
       });
   }
 
-  create({ expiredAtDate, ...todo }: CreateTodo): void {
+  create({ title, expiredAtDate, expiredAtTime }: CreateTodo): void {
     const newTodo: Todo = {
       id: crypto.randomUUID(),
+      title,
       createdAt: new Date().toISOString(),
       expiredAtDate: expiredAtDate.toISOString(),
+      expiredAtTime: expiredAtTime || '12:00 PM',
       isFavorite: false,
-      ...todo,
     };
 
     this.todos.update((todos: Todo[]) => [...todos, newTodo]);
     this.#updateStorage();
+    this.#router.navigateByUrl('/');
   }
 
   toggleFavorite(id: string): void {
