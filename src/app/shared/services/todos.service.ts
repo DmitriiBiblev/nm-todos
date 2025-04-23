@@ -1,18 +1,9 @@
-import { LAST_TODO_ID_KEY, Todo, TODO_KEY, TODO_SCHEMA } from '#shared';
 import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { isToday } from 'date-fns';
 import { delay, tap } from 'rxjs';
-
-interface GroupedTodos {
-  today: Todo[];
-  other: Todo[];
-}
-
-const INITIAL_GROUPED_TODOS: GroupedTodos = {
-  today: [],
-  other: []
-};
+import { INITIAL_GROUPED_TODOS, LAST_TODO_ID_KEY, TODO_KEY, TODO_SCHEMA } from '../data';
+import { GroupedTodos, Todo } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'

@@ -1,17 +1,6 @@
 <app-header-page titleName="ToDo list" />
 
-@if (isLoading()) {
-  <app-loader />
-} @else {
-  @if (!isEmptyTodoLists()) {
-    @if (todayTodos().length) {
-      <app-todo-block today />
-    }
+<app-todos-page [todos]="todos()">
+  There are no todo created yet
+</app-todos-page>
 
-    @if (otherTodos().length) {
-      <app-todo-block />
-    }
-  } @else {
-    Empty
-  }
-}

@@ -5,3 +5,4 @@ export * from './timer';
 export * from './todo';
 export * from './todo-block';
 export * from './todo-row';
+export * from './todos-page';
