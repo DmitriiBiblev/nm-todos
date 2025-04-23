@@ -11,7 +11,7 @@
 
 <td>
   @if (isToday()) {
-    <app-timer />
+    <app-timer [expiredAt]="todo().expiredAt" />
   } @else {
     {{ todo().expiredAt | date: 'MMM dd, yyyy' }}
   }
