@@ -4,12 +4,6 @@
   gap: var(--gj-space-24);
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: var(--gj-space-16);
-}
-
 .back {
   color: var(--gj-color-light) !important;
   background: var(--gj-color-primary);
@@ -27,11 +21,6 @@
     background: var(--gj-color-salat-90);
   }
 }
-
-.title {
-  font-size: 24px;
-  font-weight: 600;
- }
 
 .form {
   display: flex;

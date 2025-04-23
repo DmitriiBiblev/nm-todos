@@ -15,7 +15,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/todo-list/todo-list.component').then(c => c.TodoListComponent)
   },
   {
-    path: 'favorite',
+    path: 'favorites',
     loadComponent: () => import('./pages/favorite-todo/favorite-todo.component').then(c => c.FavoriteTodoComponent)
   }
 ];

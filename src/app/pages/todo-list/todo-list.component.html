@@ -1,3 +1,17 @@
-<app-todo-block today />
+<app-header-page titleName="ToDo list" />
 
-<app-todo-block />
+@if (isLoading()) {
+  Loading...
+} @else {
+  @if (!isEmptyTodoLists()) {
+    @if (todayTodos().length) {
+      <app-todo-block today />
+    }
+
+    @if (otherTodos().length) {
+      <app-todo-block />
+    }
+  } @else {
+    Empty
+  }
+}

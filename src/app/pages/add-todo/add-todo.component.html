@@ -1,12 +1,8 @@
-<div class="header">
+<app-header-page titleName="Add ToDo">
   <a class="back" [routerLink]="previousUrl">
     <mat-icon fontIcon="chevron_left"></mat-icon>
   </a>
-
-  <div class="title">
-    Add ToDo
-  </div>
-</div>
+</app-header-page>
 
 <form class="form" [formGroup]="form" (ngSubmit)="handleCreate()">
   <mat-form-field class="example-full-width">

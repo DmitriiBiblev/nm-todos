@@ -1,3 +1,17 @@
-<p>favorite-todo works!</p>
+<app-header-page titleName="Favorites" />
 
-<app-todo-block />
+@if (isLoading()) {
+  Loading...
+} @else {
+  @if (!isEmptyTodoLists()) {
+    @if (todayTodos().length) {
+      <app-todo-block today />
+    }
+
+    @if (otherTodos().length) {
+      <app-todo-block />
+    }
+  } @else {
+    Empty
+  }
+}

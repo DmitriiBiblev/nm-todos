@@ -6,6 +6,8 @@
 
 .header {
   background: var(--gj-color-primary);
+  position: sticky;
+  top: 0;
 
   &__wrapper {
     padding-block: var(--gj-space-24);

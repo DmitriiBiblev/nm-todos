@@ -1,3 +1,4 @@
+export * from './header-page';
 export * from './table';
 export * from './timer';
 export * from './todo';

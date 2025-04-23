@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { HeaderPageComponent, TodosService } from '#shared';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatDatepicker, MatDatepickerInput } from '@angular/material/datepicker';
@@ -21,15 +22,19 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatButton,
     MatIcon,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderPageComponent
   ],
   templateUrl: './add-todo.component.html',
   styleUrl: './add-todo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddTodoComponent {
+export class AddTodoComponent implements OnInit {
   readonly #router = inject(Router);
   readonly #formBuilder = inject(FormBuilder);
+  readonly #todosService = inject(TodosService);
+
+  protected readonly lastTodoId = this.#todosService.lastTodoId;
 
   protected previousUrl: string | null = null;
   protected form = this.#formBuilder.group({
@@ -40,7 +45,13 @@ export class AddTodoComponent {
 
   constructor() {
     const navigation = this.#router.getCurrentNavigation();
+
     this.previousUrl = navigation?.previousNavigation?.finalUrl?.toString() || '/list';
+  }
+
+  ngOnInit(): void {
+    if (this.lastTodoId() === null) return;
+    this.#todosService.initialLastTodoId();
   }
 
   protected handleCreate(): void {
