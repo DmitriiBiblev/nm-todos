@@ -1,4 +1,4 @@
-import { HeaderPageComponent, Todo, TodoBlockComponent, TodosService } from '#shared';
+import { HeaderPageComponent, LoaderComponent, Todo, TodoBlockComponent, TodosService } from '#shared';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, Signal } from '@angular/core';
 
 @Component({
@@ -6,7 +6,8 @@ import { ChangeDetectionStrategy, Component, computed, inject, OnInit, Signal } 
   standalone: true,
   imports: [
     TodoBlockComponent,
-    HeaderPageComponent
+    HeaderPageComponent,
+    LoaderComponent
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',

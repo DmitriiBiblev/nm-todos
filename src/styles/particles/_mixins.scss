@@ -1,0 +1,35 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin square($size) {
+  width: $size;
+  min-width: $size;
+  height: $size;
+}
+
+@mixin square-rounded($size, $radius) {
+  @include square($size);
+  border-radius: $radius;
+}
+
+@mixin circle($size) {
+  @include square-rounded($size, 50%)
+}
+
+@mixin line-clamp($count) {
+  text-wrap: balance;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $count;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -41,9 +41,11 @@ router-outlet {
 }
 
 .container {
+  width: 100%;
   max-width: 1024px;
   padding: 0 var(--gj-space-24);
   margin: 0 auto;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
 

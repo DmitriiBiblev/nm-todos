@@ -1,0 +1,57 @@
+@use 'mixins' as *;
+
+:host {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+.loader {
+  @include absolute-center();
+  width: 40px;
+  height: 40px;
+
+  &__square {
+    @include square-rounded(37.5%, 25%);
+    background: var(--gj-color-tertiary);
+    position: absolute;
+    animation: blink 3s linear infinite;
+
+
+    &:nth-child(1) {
+      --color: var(--gj-color-orange-30);
+      top: 6.25%;
+      left: 6.25%;
+    }
+
+    &:nth-child(2) {
+      --color: var(--gj-color-violet-30);
+      top: 6.25%;
+      right: 6.25%;
+      animation-delay: .75s;
+    }
+
+    &:nth-child(3) {
+      --color: var(--gj-color-salat-30);
+      bottom: 6.25%;
+      right: 6.25%;
+      animation-delay: 1.5s;
+    }
+
+    &:nth-child(4) {
+      --color: var(--gj-color-blue-30);
+      bottom: 6.25%;
+      left: 6.25%;
+      animation-delay: 2.25s;
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 40%, 100% {
+    background-color: var(--gj-color-tertiary);
+  }
+  10% {
+    background-color: var(--color);
+  }
+}

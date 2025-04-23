@@ -1,7 +1,7 @@
 <app-header-page titleName="ToDo list" />
 
 @if (isLoading()) {
-  Loading...
+  <app-loader />
 } @else {
   @if (!isEmptyTodoLists()) {
     @if (todayTodos().length) {
